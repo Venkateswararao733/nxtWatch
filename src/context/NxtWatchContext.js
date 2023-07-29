@@ -9,7 +9,7 @@ const NxtWatchContext = React.createContext({
   onCLickLikeBtn: () => {},
   isDisLiked: false,
   onClickDisLikeBtn: () => {},
-  activeMenu: 'INITIAL',
+  activeMenu: 'HOME',
   changeActiveMenu: () => {},
 })
 

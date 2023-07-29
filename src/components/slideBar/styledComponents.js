@@ -1,14 +1,5 @@
 import styled from 'styled-components'
 
-export const SlideBarMobileContainer = styled.div`
-  display: flex;
-  margin: 0px;
-  padding: 0px;
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
-
 export const SlideBarDesktopContainer = styled.div`
   background-color: ${props => (props.isDark ? '#212121' : '#f9f9f9')};
   display: none;
@@ -35,7 +26,7 @@ export const SlideItem = styled.li`
   list-style-type: none;
   margin: 5px 10px 5px 0px;
   width: 100%;
-  background-color: ${props => (props.isActive ? '#424242' : 'transparent')};
+  background-color: ${props => (props.isActive ? ' #484848' : 'transparent')};
   display: flex;
   align-items: center;
 `

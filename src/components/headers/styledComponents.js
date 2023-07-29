@@ -29,6 +29,38 @@ export const MobileViewContainer = styled.ul`
     display: none;
   }
 `
+export const SlideBarMobileContainer = styled.div`
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+export const SlideItemsContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+`
+
+export const SlideItem = styled.li`
+  list-style-type: none;
+  margin: 5px 10px 5px 0px;
+  width: 100%;
+  background-color: ${props => (props.isActive ? '#424242' : 'transparent')};
+  display: flex;
+  align-items: center;
+`
+
+export const SlideName = styled.p`
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 600;
+  color: ${props => (props.isDark ? '#f8fafc' : '#909090')};
+  margin: 0px 0px 0px 15px;
+`
 
 export const ListItems = styled.li`
   list-style-type: none;

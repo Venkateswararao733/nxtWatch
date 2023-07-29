@@ -34,6 +34,14 @@ import {
   VTE1,
 } from './styledComponents'
 
+const activeMenuConstants = {
+  home: 'HOME',
+  trending: 'TRENDING',
+  gaming: 'GAMING',
+  savedVideos: 'SAVED_VIDEOS',
+  videoItemDetails: 'VIDEO_ITEM_DETAILS',
+}
+
 class SavedVideosPage extends Component {
   renderNoVideosView = () => (
     <NxtWatchContext.Consumer>
@@ -64,10 +72,15 @@ class SavedVideosPage extends Component {
     return (
       <NxtWatchContext.Consumer key={id}>
         {value => {
-          const {isDark} = value
+          const {isDark, changeActiveMenu} = value
           return (
             <SavedVideoItemContainer>
-              <LinkItem to={`/videos/${id}`}>
+              <LinkItem
+                to={`/videos/${id}`}
+                onClick={() =>
+                  changeActiveMenu(activeMenuConstants.videoItemDetails)
+                }
+              >
                 <SavedVideoImg src={thumbnailUrl} alt="video thumbnail" />
                 <SavedVideoDescriptionContainer>
                   <ProfileImg src={profileImgUrl} alt="channel logo" />

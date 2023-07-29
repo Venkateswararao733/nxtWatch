@@ -1,10 +1,13 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {VscThreeBars} from 'react-icons/vsc'
 import {FiLogOut} from 'react-icons/fi'
-import {AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineClose, AiFillHome} from 'react-icons/ai'
 import Popup from 'reactjs-popup'
+import {FaFire} from 'react-icons/fa'
+import {GiGamepad} from 'react-icons/gi'
+import {BiListPlus} from 'react-icons/bi'
 import {
   NavContainer,
   WebsiteLogo,
@@ -18,6 +21,10 @@ import {
   PopUpContainer,
   PopupThreeLinesContainer,
   MobileSlideBar,
+  SlideBarMobileContainer,
+  SlideItemsContainer,
+  SlideItem,
+  SlideName,
   PopUpMobileBtn,
   PopUpCardContainer,
   PopUpDescription,
@@ -25,9 +32,16 @@ import {
   PopUpBtn,
 } from './styledComponents'
 
-import SlideBar from '../slideBar'
-
 import NxtWatchContext from '../../context/NxtWatchContext'
+
+const activeMenuConstants = {
+  initial: 'INITIAL',
+  home: 'HOME',
+  trending: 'TRENDING',
+  gaming: 'GAMING',
+  savedVideos: 'SAVED_VIDEOS',
+  videoItemDetails: 'VIDEO_ITEM_DETAILS',
+}
 
 class Headers extends Component {
   onClickConfirmBtn = () => {
@@ -40,7 +54,7 @@ class Headers extends Component {
     return (
       <NxtWatchContext.Consumer>
         {value => {
-          const {isDark, onClickThemeBtn} = value
+          const {isDark, onClickThemeBtn, changeActiveMenu, activeMenu} = value
           const onClickTheme = () => {
             onClickThemeBtn()
           }
@@ -82,7 +96,117 @@ class Headers extends Component {
                             <AiOutlineClose size={40} />
                           </PopUpMobileBtn>
                           <MobileSlideBar>
-                            <SlideBar />
+                            <SlideBarMobileContainer>
+                              <SlideItemsContainer>
+                                <Link
+                                  to="/"
+                                  onClick={() =>
+                                    changeActiveMenu(activeMenuConstants.home)
+                                  }
+                                  style={{textDecoration: 'none', margin: 8}}
+                                >
+                                  <SlideItem
+                                    isActive={
+                                      activeMenu === activeMenuConstants.home
+                                    }
+                                  >
+                                    <AiFillHome
+                                      size={20}
+                                      color={
+                                        activeMenu === activeMenuConstants.home
+                                          ? '#ff0000'
+                                          : '#909090'
+                                      }
+                                    />
+                                    <SlideName isDark={isDark}>Home</SlideName>
+                                  </SlideItem>
+                                </Link>
+                                <Link
+                                  to="/trending"
+                                  onClick={() =>
+                                    changeActiveMenu(
+                                      activeMenuConstants.trending,
+                                    )
+                                  }
+                                  style={{textDecoration: 'none', margin: 8}}
+                                >
+                                  <SlideItem
+                                    isActive={
+                                      activeMenu ===
+                                      activeMenuConstants.trending
+                                    }
+                                  >
+                                    <FaFire
+                                      size={20}
+                                      color={
+                                        activeMenu ===
+                                        activeMenuConstants.trending
+                                          ? '#ff0000'
+                                          : '#909090'
+                                      }
+                                    />
+                                    <SlideName isDark={isDark}>
+                                      Trending
+                                    </SlideName>
+                                  </SlideItem>
+                                </Link>
+                                <Link
+                                  to="/gaming"
+                                  onClick={() =>
+                                    changeActiveMenu(activeMenuConstants.gaming)
+                                  }
+                                  style={{textDecoration: 'none', margin: 8}}
+                                >
+                                  <SlideItem
+                                    isActive={
+                                      activeMenu === activeMenuConstants.gaming
+                                    }
+                                  >
+                                    <GiGamepad
+                                      size={20}
+                                      color={
+                                        activeMenu ===
+                                        activeMenuConstants.gaming
+                                          ? '#ff0000'
+                                          : '#909090'
+                                      }
+                                    />
+                                    <SlideName isDark={isDark}>
+                                      Gaming
+                                    </SlideName>
+                                  </SlideItem>
+                                </Link>
+                                <Link
+                                  to="/saved-videos"
+                                  onClick={() =>
+                                    changeActiveMenu(
+                                      activeMenuConstants.savedVideos,
+                                    )
+                                  }
+                                  style={{textDecoration: 'none', margin: 8}}
+                                >
+                                  <SlideItem
+                                    isActive={
+                                      activeMenu ===
+                                      activeMenuConstants.savedVideos
+                                    }
+                                  >
+                                    <BiListPlus
+                                      size={24}
+                                      color={
+                                        activeMenu ===
+                                        activeMenuConstants.savedVideos
+                                          ? '#ff0000'
+                                          : '#909090'
+                                      }
+                                    />
+                                    <SlideName isDark={isDark}>
+                                      Saved videos
+                                    </SlideName>
+                                  </SlideItem>
+                                </Link>
+                              </SlideItemsContainer>
+                            </SlideBarMobileContainer>
                           </MobileSlideBar>
                         </PopupThreeLinesContainer>
                       )}

@@ -15,16 +15,16 @@ import ProtectedRoute from './components/protectedRoute'
 import './App.css'
 
 const activeMenuConstants = {
-  initial: 'INITIAL',
   home: 'HOME',
   trending: 'TRENDING',
   gaming: 'GAMING',
   savedVideos: 'SAVED_VIDEOS',
+  videoItemDetails: 'VIDEO_ITEM_DETAILS',
 }
 
 class App extends Component {
   state = {
-    activeMenu: activeMenuConstants.initial,
+    activeMenu: activeMenuConstants.home,
     isDark: false,
     savedVideos: [],
     isLiked: false,

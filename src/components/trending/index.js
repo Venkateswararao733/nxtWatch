@@ -38,6 +38,14 @@ import {
   VTE1,
 } from './styledComponents'
 
+const activeMenuConstants = {
+  home: 'HOME',
+  trending: 'TRENDING',
+  gaming: 'GAMING',
+  savedVideos: 'SAVED_VIDEOS',
+  videoItemDetails: 'VIDEO_ITEM_DETAILS',
+}
+
 const trendingState = {
   initial: 'INITIAL',
   progress: 'PROGRESS',
@@ -130,10 +138,15 @@ class TrendingPage extends Component {
     return (
       <NxtWatchContext.Consumer key={id}>
         {value => {
-          const {isDark} = value
+          const {isDark, changeActiveMenu} = value
           return (
             <VideoItemContainer>
-              <LinkItem to={`/videos/${id}`}>
+              <LinkItem
+                to={`/videos/${id}`}
+                onClick={() =>
+                  changeActiveMenu(activeMenuConstants.videoItemDetails)
+                }
+              >
                 <VideoImg src={thumbnailUrl} alt="video thumbnail" />
                 <VideoDescriptionContainer>
                   <ProfileImg src={profileImgUrl} alt="channel logo" />

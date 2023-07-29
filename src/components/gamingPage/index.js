@@ -39,6 +39,14 @@ const gamingState = {
   failure: 'Failure',
 }
 
+const activeMenuConstants = {
+  home: 'HOME',
+  trending: 'TRENDING',
+  gaming: 'GAMING',
+  savedVideos: 'SAVED_VIDEOS',
+  videoItemDetails: 'VIDEO_ITEM_DETAILS',
+}
+
 class GamingPage extends Component {
   state = {gamingStatus: gamingState.initial, gamingVideosArray: []}
 
@@ -114,10 +122,15 @@ class GamingPage extends Component {
     return (
       <NxtWatchContext.Consumer key={id}>
         {value => {
-          const {isDark} = value
+          const {isDark, changeActiveMenu} = value
           return (
             <GameItemContainer>
-              <LinkItem to={`/videos/${id}`}>
+              <LinkItem
+                to={`/videos/${id}`}
+                onClick={() =>
+                  changeActiveMenu(activeMenuConstants.videoItemDetails)
+                }
+              >
                 <GameImg src={thumbnailUrl} alt="video thumbnail" />
                 <GameDescriptionContainer>
                   <TitleE1 isDark={isDark}>{title}</TitleE1>
